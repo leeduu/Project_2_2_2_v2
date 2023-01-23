@@ -1,6 +1,7 @@
 package web.dao;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import web.models.Car;
 
 import java.util.ArrayList;
@@ -9,16 +10,25 @@ import java.util.List;
 @Component
 public class CarsDao {
 
-    private String model;
-    private String color;
-    private int number;
-    ArrayList<Car> cars;
+    private static String model;
+    private static String color;
+    private static int number;
+    private ArrayList<Car> cars;
 
-    public List<Car> showAllCars(ArrayList<Car> cars) {
+        {
+            cars = new ArrayList<>();
+            cars.add(new Car("Volvo", "grey", 123));
+            cars.add(new Car("Peugeot", "blue", 456));
+            cars.add(new Car("Volkswagen", "white", 789));
+            cars.add(new Car("Renault", "black", 012));
+            cars.add(new Car("Suzuki", "beige", 345));
+        }
+
+    public List<Car> showAllCars() {
         return cars;
     }
 
-    public List<Car> showCars(ArrayList<Car> cars, int count) {
+    public List<Car> showCars(int count) {
         List<Car> selectedCars = new ArrayList<>();
         for(int i = 0; i < count; i++) {
             selectedCars.add(cars.get(i));
