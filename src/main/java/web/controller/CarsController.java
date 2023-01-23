@@ -23,15 +23,6 @@ public class CarsController {
             case "1", "2", "3", "4":
                 carModel.addAttribute("carsInfo", carsDao.showCars(Integer.parseInt(count)));
                 break;
-//            case "2":
-//                carModel.addAttribute("carsInfo", carsDao.showCars(2));
-//                break;
-//            case "3":
-//                carModel.addAttribute("carsInfo", carsDao.showCars(3));
-//                break;
-//            case "4":
-//                carModel.addAttribute("carsInfo", carsDao.showCars(4));
-//                break;
             default:
                 carModel.addAttribute("carsInfo", carsDao.showAllCars());
                 break;
