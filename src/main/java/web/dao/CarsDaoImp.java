@@ -23,13 +23,10 @@ public class CarsDaoImp implements CarsDao {
 
     public List<Car> showCars(int count) {
         List<Car> selectedCars = new ArrayList<>();
-        if (count > 0 && count < 5) {
+        if (count > 0) {
             selectedCars = cars.stream().limit(count).collect(Collectors.toList());
         }
         if (count == 0) {
-        }
-        if (count >= 5) {
-            selectedCars = cars.stream().limit(count).collect(Collectors.toList());
         }
         return selectedCars;
     }
