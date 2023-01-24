@@ -5,13 +5,11 @@ import web.models.Car;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class CarsDaoImp implements CarsDao {
 
-    private static String model;
-    private static String color;
-    private static int number;
     private ArrayList<Car> cars;
 
         {
@@ -23,23 +21,17 @@ public class CarsDaoImp implements CarsDao {
             cars.add(new Car("Suzuki", "beige", 345));
         }
 
-    public List<Car> showAllCars() {
-        return cars;
-    }
-
     public List<Car> showCars(int count) {
         List<Car> selectedCars = new ArrayList<>();
-        for(int i = 0; i < count; i++) {
-            selectedCars.add(cars.get(i));
+        if (count > 0 && count < 5) {
+            selectedCars = cars.stream().limit(count).collect(Collectors.toList());
+        }
+        if (count == 0) {
+        }
+        if (count >= 5) {
+            selectedCars = cars.stream().limit(count).collect(Collectors.toList());
         }
         return selectedCars;
     }
 
-    @Override
-    public String toString() {
-        return "Car " +
-                "model is " + model +
-                ", color is " + color +
-                ", number is " + number + "\n";
-    }
 }
